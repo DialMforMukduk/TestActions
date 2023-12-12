@@ -7,7 +7,7 @@ on:
       logLevel:
         description: 'Log Level'
         required: true
-        default: 'warning'
+        default: 'info'
 # Required to get the ID Token that will be used for OIDC
 permissions:
   id-token: write
@@ -24,8 +24,8 @@ jobs:
         uses: aws-actions/configure-aws-credentials@v1
         with:
           aws-region: eu-west-1
-          role-to-assume: arn:aws:iam::183110428041:role/sts-lab-2-target
+          role-to-assume: arn:aws:iam::400632018843:role/sts-lab-2-target
           role-session-name: OIDCSession
  
-      - run: aws s3 ls
+      - run: aws secretsmanager list-secrets
         shell: bash
